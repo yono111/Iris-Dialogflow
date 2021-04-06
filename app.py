@@ -64,12 +64,12 @@ def processRequest(req):
             flowr = 'Virginica'
        
         fulfillmentText= "The Iris type seems to be..  {} !".format(flowr)
-        #log.write_log(sessionID, "Bot Says: "+fulfillmentText)
+        log.write_log(sessionID, "Bot Says: "+fulfillmentText)
         return {
             "fulfillmentText": fulfillmentText
         }
     #else:
-    #    log.write_log(sessionID, "Bot Says: " + result.fulfillmentText)
+         log.write_log(sessionID, "Bot Says: " + result.fulfillmentText)
 
 if __name__ == '__main__':
     app.run()
