@@ -18,13 +18,13 @@ def webhook():
 
     req = request.get_json(silent=True, force=True)
 
-    #print("Request:")
-    #print(json.dumps(req, indent=4))
+    print("Request:")
+    print(json.dumps(req, indent=4))
 
     res = processRequest(req)
 
     res = json.dumps(res, indent=4)
-    #print(res)
+    print(res)
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
     return r
@@ -33,10 +33,10 @@ def webhook():
 # processing the request from dialogflow
 def processRequest(req):
 
-    #sessionID=req.get('responseId')
+    sessionID=req.get('responseId')
     result = req.get("queryResult")
-    #user_says=result.get("queryText")
-    #log.write_log(sessionID, "User Says: "+user_says)
+    user_says=result.get("queryText")
+    log.write_log(sessionID, "User Says: "+user_says)
     parameters = result.get("parameters")
     Petal_length=parameters.get("number")
     Petal_width = parameters.get("number1")
@@ -68,7 +68,7 @@ def processRequest(req):
         return {
             "fulfillmentText": fulfillmentText
         }
-    #else:
+    else:
          log.write_log(sessionID, "Bot Says: " + result.fulfillmentText)
 
 if __name__ == '__main__':
